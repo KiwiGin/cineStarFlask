@@ -1,0 +1,21 @@
+﻿{% extends 'index.html' %}
+{% block contenido_interno %}
+
+				<br/><h1>Nuestros Cines</h1><br/>
+				{% for cine in cines %}
+				<script>
+					//console.log('El ID del cine es: {{ cine.id }}');
+				</script>
+				<div class="contenido-cine">
+	        	    <img src="{{ url_for('static', filename='img/cine/' + cine.id|string + '.1.jpg') }}" width="227" height="170"/>
+            	   	<div class="datos-cine">
+       				   	<h4>{{ cine.RazonSocial }}</h4><br/>
+                		<span>{{ cine.Direccion }} - {{ cine.idDistrito }}<br/><br/>Teléfono: {{ cine.Telefonos }} anexo 865</span>
+                	</div>
+                	<br/>
+                	<a href="{{ url_for('getCine', id=cine.id) }}">
+                		<img src="{{ url_for('static', filename='img/varios/ico-info2.png') }}" width="150" height="40"/>
+                	</a>
+				</div>
+				{% endfor %}
+{% endblock %}
